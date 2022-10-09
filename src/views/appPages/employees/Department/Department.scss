@@ -1,0 +1,11 @@
+
+.depart {
+  table {
+    // thead {}
+    tbody {
+      tr:nth-child(odd) {
+        background-color: #E9E9E9;
+      }
+    }
+  }
+}

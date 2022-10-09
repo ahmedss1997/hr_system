@@ -1,0 +1,44 @@
+.content-emp {
+  .main-table {
+    table {
+      // thead {}
+      tbody {
+        tr:nth-child(odd) {
+          background-color: #E9E9E9;
+        }
+      }
+    }
+  }
+  .v-overlay__content { 
+    position: absolute;
+    top: 40px;
+  }
+  .overlay2 {
+    .v-overlay__content { 
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  .v-input__icon--prepend {
+    i.notranslate {
+      color: #000 !important;
+    }
+  }
+}
+
+
+.active {
+  display: flex !important;
+}
+
+.active2 {
+  display: none !important;
+}
+
+.dig {
+  z-index: 10000;
+  // height: 1500px;
+  // overflow-y: auto;
+  // position: relative;
+}

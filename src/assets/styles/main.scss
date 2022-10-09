@@ -1,0 +1,36 @@
+
+* {
+  scrollbar-width: thin
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+
+  &-track {
+    background: #f1f1f1;
+  }
+
+  &-thumb {
+    background: #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    &:hover {
+      background: #555;
+    }
+  }
+}
+
+// our framework
+.sidebar-space {
+  padding-left: 260px !important;
+}
+
+.miniSide-padding {
+  padding-left:60px !important
+}
+
+.v-main__wrap {
+  position: static;
+}
