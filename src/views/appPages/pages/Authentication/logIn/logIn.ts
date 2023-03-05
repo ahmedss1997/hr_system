@@ -25,7 +25,7 @@ export default Vue.extend({
           const body = result.body as models.iLogin;
           this.$store.commit("get_currentUser", body.user);
           localStorage.setItem("token", body.token);
-          this.$router.push("/Home");
+          this.$router.push("/employees/all");
         } else {
           // there is something wrong
           this.error.displayError = true;
