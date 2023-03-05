@@ -1,5 +1,5 @@
 <template>
-  <div class="depart py-4 mt-6">
+  <div class="depart pb-4 pt-15 mt-6">
     <v-container fluid>
       <v-row no-gutters class="mb-7 px-3">
         <v-col cols="2" md="6" lg="8">

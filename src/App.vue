@@ -3,7 +3,7 @@
     <navbar v-if="$route.meta && $route.meta.navSide"></navbar>
     <sidebar v-if="$route.meta && $route.meta.navSide"></sidebar>
     <v-main
-      class="bgColor pt-12 transition-all duration-500 ease-in-out"
+      class="bgColor transition-all duration-500 ease-in-out"
       :class="
         $route.meta &&
         $route.meta.navSide &&

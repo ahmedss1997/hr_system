@@ -7,6 +7,7 @@ import Reset from "../views/appPages/pages/Authentication/resetPassword/Reset.vu
 import employees from "../views/appPages/employees/AllEmployees/employees.vue";
 import Profile from "../views/appPages/pages/profile/Profile.vue";
 import Department from "../views/appPages/employees/Department/Department.vue";
+import clients from "../views/appPages/employees/Department/Department.vue";
 
 Vue.use(VueRouter);
 
@@ -70,6 +71,15 @@ const routes: Array<RouteConfig> = [
     path: "/profile",
     name: "Profile",
     component: Profile,
+    meta: {
+      auth: true,
+      navSide: true,
+    },
+  },
+  {
+    path: "/clients",
+    name: "clients",
+    component: Department,
     meta: {
       auth: true,
       navSide: true,

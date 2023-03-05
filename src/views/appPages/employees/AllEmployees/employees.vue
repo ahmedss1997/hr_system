@@ -1,6 +1,6 @@
 <template>
-  <div class="content-emp transition-all duration-500 ease-in-out pt-10">
-    <v-container fluid>
+  <div class="content-emp transition-all duration-500 ease-in-out pt-15">
+    <v-container fluid class="pt-8">
       <v-row no-gutters class="mb-7 px-3">
         <v-col cols="2" md="6" lg="8">
           <div class="breed-h">
@@ -81,8 +81,8 @@
                     <v-col class="px-3 mb-4" cols="12" md="6">
                       <span
                         class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Last Name</span
-                      >
+                        >Last Name
+                      </span>
                       <v-text-field
                         class=""
                         height="40"

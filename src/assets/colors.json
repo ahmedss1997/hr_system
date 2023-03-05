@@ -1,14 +1,14 @@
 {
   "colors": {
     "light": {
-      "primary": "#4D77FF",
+      "primary": "FB2576",
+      "secondary": "3F0071",
+      "accent": "FB2576",
       "lightPrimary":"#56BBF1",
-      "darkPrimary":"#243771",
+      "darkPrimary":"FF5F9E",
       "txtOnPrimary":"#fff",
       "support": "#F900BF",
       "lightSupport":"#FF85B3",
-      "secondary": "#b0bec5",
-      "accent": "#8c9eff",
       "error": "#e61212",
       "warning": "#DDA322",
       "white": "#fff",
@@ -28,3 +28,6 @@
     }
   }
 }
+
+
+

@@ -9,7 +9,7 @@ export class Server {
     includeToken?: boolean,
     dataText?: boolean
   ): Promise<t> {
-    const apisURL = "https://www.hrsystem.somee.com/";
+    const apisURL = "https://hrsystem.somee.com/";
     resourceUri = apisURL + resourceUri;
 
     if (!data) data = {};

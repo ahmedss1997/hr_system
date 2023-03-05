@@ -60,11 +60,6 @@ export const validation = {
   ],
 };
 
-// هنا خليناها لوحدها علشان هي جوة ال
-//computed
-// وعايزين نمررلها متغير تاني
-// password
-// عشان نقارن بينهم
 export function confirmPassword(password: string | any) {
   return [
     (value?: string) => !!value || "Required!",

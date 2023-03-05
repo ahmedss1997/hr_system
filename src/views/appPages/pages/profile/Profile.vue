@@ -1,5 +1,5 @@
 <template>
-  <div class="content-emp">
+  <div class="content-emp pt-15">
     <v-container fluid pt-10>
       <v-row no-gutters></v-row>
       <v-row no-gutters class="px-4">

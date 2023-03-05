@@ -1,0 +1,110 @@
+[debug] [2023-03-05T20:46:08.220Z] ----------------------------------------------------------------------
+[debug] [2023-03-05T20:46:08.221Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-03-05T20:46:08.222Z] CLI Version:   11.24.0
+[debug] [2023-03-05T20:46:08.222Z] Platform:      win32
+[debug] [2023-03-05T20:46:08.222Z] Node Version:  v16.16.0
+[debug] [2023-03-05T20:46:08.224Z] Time:          Sun Mar 05 2023 22:46:08 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-03-05T20:46:08.224Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-05T20:46:08.299Z] Field ".hosting.rewrites" in "firebase.json" is possibly invalid: should be array
+[debug] [2023-03-05T20:46:08.300Z] Field ".hosting" in "firebase.json" is possibly invalid: should be array
+[debug] [2023-03-05T20:46:08.300Z] Field ".hosting" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2023-03-05T20:46:08.304Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-05T20:46:08.305Z] > authorizing via signed-in user (asami6596@gmail.com)
+[debug] [2023-03-05T20:46:08.305Z] [iam] checking project hrsysteem-f75a9 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-03-05T20:46:08.306Z] > refreshing access token with scopes: []
+[debug] [2023-03-05T20:46:08.308Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-03-05T20:46:08.308Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-03-05T20:46:08.871Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-03-05T20:46:08.871Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-03-05T20:46:08.878Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions [none]
+[debug] [2023-03-05T20:46:08.878Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions x-goog-quota-user=projects/hrsysteem-f75a9
+[debug] [2023-03-05T20:46:08.878Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-05T20:46:10.023Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions 200
+[debug] [2023-03-05T20:46:10.023Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-05T20:46:10.025Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/hrsysteem-f75a9 [none]
+[debug] [2023-03-05T20:46:10.712Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/hrsysteem-f75a9 200
+[debug] [2023-03-05T20:46:10.713Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/hrsysteem-f75a9 {"projectId":"hrsysteem-f75a9","projectNumber":"979965208441","displayName":"HrSysteem","name":"projects/hrsysteem-f75a9","resources":{"hostingSite":"hrsysteem-f75a9"},"state":"ACTIVE","etag":"1_4caf97b6-80ad-4e01-a0cb-84215108e911"}
+[info] 
+[info] === Deploying to 'hrsysteem-f75a9'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-03-05T20:46:11.206Z] TypeError: _a.map is not a function
+    at normalize (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\hosting\config.js:159:90)
+    at Object.hostingConfig (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\hosting\config.js:186:9)
+    at prepare (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\hosting\prepare.js:17:28)
+    at chain (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:35:15)
+    at deploy (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:79:11)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-05T20:46:32.656Z] ----------------------------------------------------------------------
+[debug] [2023-03-05T20:46:32.659Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-03-05T20:46:32.660Z] CLI Version:   11.24.0
+[debug] [2023-03-05T20:46:32.661Z] Platform:      win32
+[debug] [2023-03-05T20:46:32.661Z] Node Version:  v16.16.0
+[debug] [2023-03-05T20:46:32.662Z] Time:          Sun Mar 05 2023 22:46:32 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-03-05T20:46:32.662Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-05T20:46:32.737Z] Field ".hosting.rewrites" in "firebase.json" is possibly invalid: should be array
+[debug] [2023-03-05T20:46:32.738Z] Field ".hosting" in "firebase.json" is possibly invalid: should be array
+[debug] [2023-03-05T20:46:32.738Z] Field ".hosting" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2023-03-05T20:46:32.743Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-05T20:46:32.743Z] > authorizing via signed-in user (asami6596@gmail.com)
+[debug] [2023-03-05T20:46:32.743Z] [iam] checking project hrsysteem-f75a9 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-03-05T20:46:32.747Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions [none]
+[debug] [2023-03-05T20:46:32.747Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions x-goog-quota-user=projects/hrsysteem-f75a9
+[debug] [2023-03-05T20:46:32.747Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-05T20:46:33.866Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions 200
+[debug] [2023-03-05T20:46:33.867Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-05T20:46:33.869Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/hrsysteem-f75a9 [none]
+[debug] [2023-03-05T20:46:34.471Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/hrsysteem-f75a9 200
+[debug] [2023-03-05T20:46:34.471Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/hrsysteem-f75a9 {"projectId":"hrsysteem-f75a9","projectNumber":"979965208441","displayName":"HrSysteem","name":"projects/hrsysteem-f75a9","resources":{"hostingSite":"hrsysteem-f75a9"},"state":"ACTIVE","etag":"1_4caf97b6-80ad-4e01-a0cb-84215108e911"}
+[info] 
+[info] === Deploying to 'hrsysteem-f75a9'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-03-05T20:46:34.896Z] TypeError: _a.map is not a function
+    at normalize (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\hosting\config.js:159:90)
+    at Object.hostingConfig (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\hosting\config.js:186:9)
+    at prepare (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\hosting\prepare.js:17:28)
+    at chain (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:35:15)
+    at deploy (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:79:11)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-03-05T20:49:12.751Z] ----------------------------------------------------------------------
+[debug] [2023-03-05T20:49:12.753Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-03-05T20:49:12.754Z] CLI Version:   11.24.0
+[debug] [2023-03-05T20:49:12.754Z] Platform:      win32
+[debug] [2023-03-05T20:49:12.754Z] Node Version:  v16.16.0
+[debug] [2023-03-05T20:49:12.754Z] Time:          Sun Mar 05 2023 22:49:12 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-03-05T20:49:12.755Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-05T20:49:12.820Z] Field ".hosting.rewrites" in "firebase.json" is possibly invalid: should be array
+[debug] [2023-03-05T20:49:12.821Z] Field ".hosting" in "firebase.json" is possibly invalid: should be array
+[debug] [2023-03-05T20:49:12.821Z] Field ".hosting" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2023-03-05T20:49:12.825Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-05T20:49:12.826Z] > authorizing via signed-in user (asami6596@gmail.com)
+[debug] [2023-03-05T20:49:12.826Z] [iam] checking project hrsysteem-f75a9 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-03-05T20:49:12.828Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions [none]
+[debug] [2023-03-05T20:49:12.828Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions x-goog-quota-user=projects/hrsysteem-f75a9
+[debug] [2023-03-05T20:49:12.828Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-05T20:49:13.912Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions 200
+[debug] [2023-03-05T20:49:13.912Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hrsysteem-f75a9:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-05T20:49:13.913Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/hrsysteem-f75a9 [none]
+[debug] [2023-03-05T20:49:14.512Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/hrsysteem-f75a9 200
+[debug] [2023-03-05T20:49:14.512Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/hrsysteem-f75a9 {"projectId":"hrsysteem-f75a9","projectNumber":"979965208441","displayName":"HrSysteem","name":"projects/hrsysteem-f75a9","resources":{"hostingSite":"hrsysteem-f75a9"},"state":"ACTIVE","etag":"1_4caf97b6-80ad-4e01-a0cb-84215108e911"}
+[info] 
+[info] === Deploying to 'hrsysteem-f75a9'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-03-05T20:49:14.935Z] TypeError: _a.map is not a function
+    at normalize (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\hosting\config.js:159:90)
+    at Object.hostingConfig (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\hosting\config.js:186:9)
+    at prepare (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\hosting\prepare.js:17:28)
+    at chain (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:35:15)
+    at deploy (C:\Users\Ahmed Samy\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:79:11)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: An unexpected error has occurred.
