@@ -1,11 +1,26 @@
 
 .depart {
-  table {
-    // thead {}
-    tbody {
-      tr:nth-child(odd) {
-        background-color: #E9E9E9;
+  .v-dialog {
+    overflow-y: hidden !important;
+  }
+  .main-table {
+    table {
+      background-color: #F2F7FD;
+      // thead {}
+      tbody {
+        tr:nth-child(odd) {
+          background-color: #E9E9E9;
+          &:hover {
+            background-color: #E9E9E9 !important;
+          }
+        }
+        tr {
+          &:hover {
+            background-color: transparent !important;
+          }
+        }
       }
     }
   }
 }
+

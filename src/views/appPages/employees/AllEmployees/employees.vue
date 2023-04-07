@@ -28,7 +28,8 @@
               <v-icon class="primary--text">mdi-view-sequential</v-icon>
             </a>
           </div>
-          <v-dialog v-model="dialog3" persistent max-width="800" class="dig">
+          <!-- Add Dialog -->
+          <v-dialog v-model="dialog" persistent max-width="800" class="dig">
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 class="primary txtOnPrimary--text font-weight-bold text-capitalize rounded-xl px-3 py-2"
@@ -49,7 +50,7 @@
                   top
                   right
                   class="primary rounded-circle pa-0"
-                  @click="dialog3 = false"
+                  @click="dialog = false"
                   height="20"
                   min-width="auto"
                   width="20"
@@ -64,189 +65,207 @@
               </v-card-title>
               <v-card-text>
                 <v-container>
-                  <v-row no-gutters>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >First Name</span
-                      >
-                      <v-text-field
-                        class=""
-                        height="40"
-                        label=""
-                        solo
-                        :hide-details="true"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Last Name
-                      </span>
-                      <v-text-field
-                        class=""
-                        height="40"
-                        label="Solo"
-                        solo
-                        :hide-details="true"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Username</span
-                      >
-                      <v-text-field
-                        class=""
-                        height="40"
-                        label="Solo"
-                        solo
-                        :hide-details="true"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Email</span
-                      >
-                      <v-text-field
-                        class=""
-                        height="40"
-                        label="Solo"
-                        solo
-                        :hide-details="true"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Password</span
-                      >
-                      <v-text-field
-                        class=""
-                        height="40"
-                        label="Solo"
-                        solo
-                        :hide-details="true"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Confirm Password</span
-                      >
-                      <v-text-field
-                        class=""
-                        height="40"
-                        label="Solo"
-                        solo
-                        :hide-details="true"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Employee ID</span
-                      >
-                      <v-text-field
-                        class=""
-                        height="40"
-                        label="Solo"
-                        solo
-                        :hide-details="true"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Joining Date</span
-                      >
-                      <v-menu
-                        v-model="menu2"
-                        :close-on-content-click="false"
-                        :nudge-right="40"
-                        transition="scale-transition"
-                        offset-y
-                        min-width="auto"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
+                  <v-form ref="addForm">
+                    <v-row>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >First Name</span
+                        >
+                        <v-text-field
+                          v-model="newEmployee.firstName"
+                          class=""
+                          height="40"
+                          label="Frist Name"
+                          solo
+                          :hide-details="false"
+                          :rules="validationRules.textRules"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Last Name
+                        </span>
+                        <v-text-field
+                          v-model="newEmployee.lastName"
+                          class=""
+                          height="40"
+                          label="Last Name"
+                          solo
+                          :hide-details="false"
+                          :rules="validationRules.textRules"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Username</span
+                        >
+                        <v-text-field
+                          v-model="newEmployee.fulltName"
+                          class=""
+                          height="40"
+                          label="Username"
+                          solo
+                          :hide-details="false"
+                          :rules="validationRules.textRules"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Email</span
+                        >
+                        <v-text-field
+                          v-model="newEmployee.email"
+                          class=""
+                          height="40"
+                          label="Your Email"
+                          solo
+                          :hide-details="false"
+                          :rules="validationRules.emailRules"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Password</span
+                        >
+                        <v-text-field
+                          v-model="newEmployee.password"
+                          class=""
+                          height="40"
+                          label="Solo"
+                          solo
+                          :hide-details="false"
+                          :rules="validationRules.passowrdRules"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Confirm Password</span
+                        >
+                        <v-text-field
+                          class=""
+                          height="40"
+                          label="Solo"
+                          solo
+                          :hide-details="false"
+                          :rules="repeatPasswordRules"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Employee ID</span
+                        >
+                        <v-text-field
+                          class=""
+                          height="40"
+                          label="Solo"
+                          solo
+                          :hide-details="false"
+                          :rules="validationRules.numberRules"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Joining Date</span
+                        >
+                        <v-menu
+                          v-model="menu2"
+                          :close-on-content-click="false"
+                          :nudge-right="40"
+                          transition="scale-transition"
+                          offset-y
+                          min-width="auto"
+                        >
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-text-field
+                              v-model="date"
+                              label="Picker without buttons"
+                              prepend-icon="mdi-calendar"
+                              readonly
+                              v-bind="attrs"
+                              v-on="on"
+                              solo
+                              :hide-details="true"
+                              class="relative"
+                            ></v-text-field>
+                          </template>
+                          <v-date-picker
                             v-model="date"
-                            label="Picker without buttons"
-                            prepend-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                            solo
-                            :hide-details="true"
-                            class="relative"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          v-model="date"
-                          @input="menu2 = false"
-                        ></v-date-picker>
-                      </v-menu>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Phone</span
-                      >
-                      <v-text-field
-                        class=""
-                        height="40"
-                        label="Solo"
-                        solo
-                        :hide-details="true"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Company</span
-                      >
-                      <v-select
-                        :items="itemss"
-                        label="Select Designation"
-                        solo
-                        :hide-details="true"
-                        height="50"
-                      ></v-select>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Department</span
-                      >
-                      <v-select
-                        :items="itemss"
-                        label="Select Designation"
-                        solo
-                        :hide-details="true"
-                        height="50"
-                      ></v-select>
-                    </v-col>
-                    <v-col class="px-3 mb-4" cols="12" md="6">
-                      <span
-                        class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                        >Designation</span
-                      >
-                      <v-select
-                        :items="itemss"
-                        label="Select Designation"
-                        solo
-                        :hide-details="true"
-                        height="50"
-                      ></v-select>
-                    </v-col>
-                  </v-row>
+                            @input="menu2 = false"
+                          ></v-date-picker>
+                        </v-menu>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Phone</span
+                        >
+                        <v-text-field
+                          class=""
+                          height="40"
+                          label="Solo"
+                          solo
+                          :hide-details="false"
+                          :rules="validationRules.numberRules"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Company</span
+                        >
+                        <v-select
+                          :items="itemss"
+                          label="Select Designation"
+                          solo
+                          :hide-details="true"
+                          height="50"
+                        ></v-select>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Department</span
+                        >
+                        <v-select
+                          :items="itemss"
+                          label="Select Designation"
+                          solo
+                          :hide-details="true"
+                          height="50"
+                        ></v-select>
+                      </v-col>
+                      <v-col class="px-3 mb-4" cols="12" md="6">
+                        <span
+                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                          >Designation</span
+                        >
+                        <v-select
+                          :items="itemss"
+                          label="Select Designation"
+                          solo
+                          :hide-details="true"
+                          height="50"
+                        ></v-select>
+                      </v-col>
+                    </v-row>
+                  </v-form>
+
                   <v-btn
+                    @click="addEmployee()"
                     class="primary txtOnPrimary--text text-capitalize font-bold text-h6 my-10 mx-auto pt-3 pb-4 px-10 d-block rounded-pill"
                     height="50"
                     width="200"
-                    >Submit</v-btn
                   >
+                    Submit
+                  </v-btn>
                 </v-container>
               </v-card-text>
             </v-card>
@@ -322,242 +341,23 @@
 
                 <v-list>
                   <v-list>
-                    <!-- dialog in boxes -->
+                    <!-- Edit dialog in boxes -->
                     <v-dialog
-                      v-model="dialog"
+                      v-model="dialog2"
                       persistent
                       max-width="800"
                       class="dig"
                     >
                       <template v-slot:activator="{ on, attrs }">
-                        <v-list-item v-bind="attrs" v-on="on">
+                        <v-list-item
+                          v-bind="attrs"
+                          v-on="on"
+                          @click="sendID(infoEmployee)"
+                        >
                           <v-icon class="mx-1 text-h6">
                             mdi-grease-pencil
                           </v-icon>
                           <v-list-item-title> Edit </v-list-item-title>
-                        </v-list-item>
-                      </template>
-                      <v-card>
-                        <v-card-actions>
-                          <v-btn
-                            absolute
-                            top
-                            right
-                            class="primary rounded-circle pa-0"
-                            @click="dialog = false"
-                            height="20"
-                            min-width="auto"
-                            width="20"
-                          >
-                            <v-icon class="text-caption txtOnPrimary--text"
-                              >mdi-close-thick</v-icon
-                            >
-                          </v-btn>
-                        </v-card-actions>
-                        <v-card-title class="d-flex justify-center text-h5">
-                          <h3 class="mt-4">Edit Employee</h3>
-                        </v-card-title>
-                        <v-card-text>
-                          <v-container>
-                            <v-row no-gutters>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >First Name</span
-                                >
-                                <v-text-field
-                                  class=""
-                                  height="40"
-                                  label=""
-                                  solo
-                                  :hide-details="true"
-                                ></v-text-field>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Last Name</span
-                                >
-                                <v-text-field
-                                  class=""
-                                  height="40"
-                                  label="Solo"
-                                  solo
-                                  :hide-details="true"
-                                ></v-text-field>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Username</span
-                                >
-                                <v-text-field
-                                  class=""
-                                  height="40"
-                                  label="Solo"
-                                  solo
-                                  :hide-details="true"
-                                ></v-text-field>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Email</span
-                                >
-                                <v-text-field
-                                  class=""
-                                  height="40"
-                                  label="Solo"
-                                  solo
-                                  :hide-details="true"
-                                ></v-text-field>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Password</span
-                                >
-                                <v-text-field
-                                  class=""
-                                  height="40"
-                                  label="Solo"
-                                  solo
-                                  :hide-details="true"
-                                ></v-text-field>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Confirm Password</span
-                                >
-                                <v-text-field
-                                  class=""
-                                  height="40"
-                                  label="Solo"
-                                  solo
-                                  :hide-details="true"
-                                ></v-text-field>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Employee ID</span
-                                >
-                                <v-text-field
-                                  class=""
-                                  height="40"
-                                  label="Solo"
-                                  solo
-                                  :hide-details="true"
-                                ></v-text-field>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Joining Date</span
-                                >
-                                <v-menu
-                                  v-model="menu2"
-                                  :close-on-content-click="false"
-                                  :nudge-right="40"
-                                  transition="scale-transition"
-                                  offset-y
-                                  min-width="auto"
-                                >
-                                  <template v-slot:activator="{ on, attrs }">
-                                    <v-text-field
-                                      v-model="date"
-                                      label="Picker without buttons"
-                                      prepend-icon="mdi-calendar"
-                                      readonly
-                                      v-bind="attrs"
-                                      v-on="on"
-                                      solo
-                                      :hide-details="true"
-                                      class="relative"
-                                    ></v-text-field>
-                                  </template>
-                                  <v-date-picker
-                                    v-model="date"
-                                    @input="menu2 = false"
-                                  ></v-date-picker>
-                                </v-menu>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Phone</span
-                                >
-                                <v-text-field
-                                  class=""
-                                  height="40"
-                                  label="Solo"
-                                  solo
-                                  :hide-details="true"
-                                ></v-text-field>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Company</span
-                                >
-                                <v-select
-                                  :items="itemss"
-                                  label="Select Designation"
-                                  solo
-                                  :hide-details="true"
-                                  height="50"
-                                ></v-select>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Department</span
-                                >
-                                <v-select
-                                  :items="itemss"
-                                  label="Select Designation"
-                                  solo
-                                  :hide-details="true"
-                                  height="50"
-                                ></v-select>
-                              </v-col>
-                              <v-col class="px-3 mb-4" cols="12" md="6">
-                                <span
-                                  class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                  >Designation</span
-                                >
-                                <v-select
-                                  :items="itemss"
-                                  label="Select Designation"
-                                  solo
-                                  :hide-details="true"
-                                  height="50"
-                                ></v-select>
-                              </v-col>
-                            </v-row>
-                            <v-btn
-                              class="primary txtOnPrimary--text text-capitalize font-bold text-h6 my-10 mx-auto pt-3 pb-4 px-10 d-block rounded-pill"
-                              height="50"
-                              width="200"
-                              >Submit</v-btn
-                            >
-                          </v-container>
-                        </v-card-text>
-                      </v-card>
-                    </v-dialog>
-                    <v-dialog
-                      v-model="dialog2"
-                      persistent
-                      max-width="560"
-                      class="dig"
-                    >
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-list-item v-bind="attrs" v-on="on">
-                          <v-icon class="mx-1 text-h6">
-                            mdi-delete-forever-outline
-                          </v-icon>
-                          <v-list-item-title>Delete</v-list-item-title>
                         </v-list-item>
                       </template>
                       <v-card>
@@ -578,6 +378,240 @@
                           </v-btn>
                         </v-card-actions>
                         <v-card-title class="d-flex justify-center text-h5">
+                          <h3 class="mt-4">Edit Employee</h3>
+                        </v-card-title>
+                        <v-card-text>
+                          <v-container>
+                            <v-form ref="editFormBoxes">
+                              <v-row>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >First Name</span
+                                  >
+                                  <v-text-field
+                                    v-model="editEmployee.firstName"
+                                    class=""
+                                    height="40"
+                                    label="Frist Name"
+                                    solo
+                                    :hide-details="false"
+                                  ></v-text-field>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Last Name</span
+                                  >
+                                  <v-text-field
+                                    v-model="editEmployee.lastName"
+                                    class=""
+                                    height="40"
+                                    label="Solo"
+                                    solo
+                                    :hide-details="false"
+                                  ></v-text-field>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Username</span
+                                  >
+                                  <v-text-field
+                                    v-model="editEmployee.fullName"
+                                    class=""
+                                    height="40"
+                                    label="Solo"
+                                    solo
+                                    :hide-details="false"
+                                  ></v-text-field>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Email</span
+                                  >
+                                  <v-text-field
+                                    v-model="editEmployee.email"
+                                    class=""
+                                    height="40"
+                                    label="Solo"
+                                    solo
+                                    :hide-details="false"
+                                  ></v-text-field>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Password</span
+                                  >
+                                  <v-text-field
+                                    v-model="editEmployee.password"
+                                    class=""
+                                    height="40"
+                                    label="Solo"
+                                    solo
+                                    :hide-details="false"
+                                  ></v-text-field>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Confirm Password</span
+                                  >
+                                  <v-text-field
+                                    v-model="editEmployee.password"
+                                    class=""
+                                    height="40"
+                                    label="Solo"
+                                    solo
+                                    :hide-details="false"
+                                  ></v-text-field>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Employee ID</span
+                                  >
+                                  <v-text-field
+                                    class=""
+                                    height="40"
+                                    label="Solo"
+                                    solo
+                                    :hide-details="false"
+                                  ></v-text-field>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Joining Date</span
+                                  >
+                                  <v-menu
+                                    v-model="menu2"
+                                    :close-on-content-click="false"
+                                    :nudge-right="40"
+                                    transition="scale-transition"
+                                    offset-y
+                                    min-width="auto"
+                                  >
+                                    <template v-slot:activator="{ on, attrs }">
+                                      <v-text-field
+                                        v-model="date"
+                                        label="Picker without buttons"
+                                        prepend-icon="mdi-calendar"
+                                        readonly
+                                        v-bind="attrs"
+                                        v-on="on"
+                                        solo
+                                        :hide-details="false"
+                                        class="relative"
+                                      ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                      v-model="date"
+                                      @input="menu2 = false"
+                                    ></v-date-picker>
+                                  </v-menu>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Phone</span
+                                  >
+                                  <v-text-field
+                                    class=""
+                                    height="40"
+                                    label="Solo"
+                                    solo
+                                    :hide-details="false"
+                                  ></v-text-field>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Company</span
+                                  >
+                                  <v-select
+                                    :items="itemss"
+                                    label="Select Designation"
+                                    solo
+                                    :hide-details="false"
+                                    height="50"
+                                  ></v-select>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Department</span
+                                  >
+                                  <v-select
+                                    :items="itemss"
+                                    label="Select Designation"
+                                    solo
+                                    :hide-details="false"
+                                    height="50"
+                                  ></v-select>
+                                </v-col>
+                                <v-col class="px-3 mb-4" cols="12" md="6">
+                                  <span
+                                    class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                    >Designation</span
+                                  >
+                                  <v-select
+                                    :items="itemss"
+                                    label="Select Designation"
+                                    solo
+                                    :hide-details="false"
+                                    height="50"
+                                  ></v-select>
+                                </v-col>
+                              </v-row>
+                            </v-form>
+                            <v-btn
+                              class="primary txtOnPrimary--text text-capitalize font-bold text-h6 my-10 mx-auto pt-3 pb-4 px-10 d-block rounded-pill"
+                              height="50"
+                              width="200"
+                              @click="changeData()"
+                            >
+                              Submit
+                            </v-btn>
+                          </v-container>
+                        </v-card-text>
+                      </v-card>
+                    </v-dialog>
+                    <!-- Delete Dialogs in Boxes -->
+                    <v-dialog
+                      v-model="dialog3"
+                      persistent
+                      max-width="560"
+                      class="dig"
+                    >
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-list-item v-bind="attrs" v-on="on">
+                          <v-icon class="mx-1 text-h6">
+                            mdi-delete-forever-outline
+                          </v-icon>
+                          <v-list-item-title>Delete</v-list-item-title>
+                        </v-list-item>
+                      </template>
+                      <v-card>
+                        <v-card-actions>
+                          <v-btn
+                            absolute
+                            top
+                            right
+                            class="primary rounded-circle pa-0"
+                            @click="dialog3 = false"
+                            height="20"
+                            min-width="auto"
+                            width="20"
+                          >
+                            <v-icon class="text-caption txtOnPrimary--text"
+                              >mdi-close-thick</v-icon
+                            >
+                          </v-btn>
+                        </v-card-actions>
+                        <v-card-title class="d-flex justify-center text-h5">
                           <h3 class="mt-4">Delete Employee</h3>
                         </v-card-title>
                         <v-card-text>
@@ -587,6 +621,7 @@
                           <v-container>
                             <v-row no-gutters class="justify-center">
                               <div
+                                @click="deleteEmployee(infoEmployee.id)"
                                 class="shadow-none border-primary border-solid border hover:bg-primary hover:text-white text-primary transition-all duration-500 ease-in-out flex flex-none justify-center items-center text-capitalize font-bold text-h6 mx-3 rounded-pill w-52 h-12 cursor-pointer"
                               >
                                 Delete
@@ -629,411 +664,375 @@
         :class="{ active: !isActive, active2: isActive }"
       >
         <v-col cols="12">
-          <div class="d-inline-flex align-center py-4 w-full">
-            <span>Show</span>
-            <v-select
-              v-model="showNum"
-              :items="showPerPage"
-              solo
-              dense
-              hide-details
-              class="mx-3 w-24 block flex-none rounded-lg"
-            ></v-select>
-            <span>Entries</span>
-          </div>
           <div class="main-table w-full rounded-lg">
-            <table class="w-full txtOnPrimary rounded-lg">
-              <thead class="h-14">
-                <tr>
-                  <th class="text-left px-6 primary--text">Name</th>
-                  <th class="text-left px-3 primary--text">Employee ID</th>
-                  <th class="text-left px-3 primary--text">Email</th>
-                  <th class="text-left px-3 primary--text">Mobile</th>
-                  <th class="text-left px-3 primary--text">Join Date</th>
-                  <th class="text-right px-6 primary--text">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="(infoEmployee, i) in infoEmployees.slice(
-                    (page - 1) * showNum,
-                    showNum * page
-                  )"
-                  :key="i"
-                  class="h-14"
-                >
-                  <th class="text-left px-3">
-                    <v-avatar size="30" class="mx-2">
-                      <v-img
-                        src="https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg"
-                        class="rounded-circle"
-                      ></v-img>
-                    </v-avatar>
-                    <span>{{ infoEmployee.fullName }}</span>
-                  </th>
-                  <th class="text-left px-3">unKnown</th>
-                  <th class="text-left px-3">{{ infoEmployee.email }}</th>
-                  <th class="text-left px-3">unKnown</th>
-                  <th class="text-left px-3">unKnown</th>
-                  <th class="text-right px-6">
-                    <v-menu bottom left nudge-top="-40" min-width="160">
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                          dark
-                          icon
-                          v-bind="attrs"
-                          v-on="on"
-                          class="mx-1 my-2 primary"
-                        >
-                          <v-icon>mdi-dots-vertical</v-icon>
-                        </v-btn>
-                      </template>
-
-                      <v-list>
-                        <v-list>
-                          <!-- dialog in tables -->
-                          <v-dialog
-                            v-model="dialog"
-                            persistent
-                            max-width="800"
-                            class="dig"
+            <v-data-table
+              :items="infoEmployees.slice((page - 1) * showNum, showNum * page)"
+              :headers="headers"
+              hide-default-footer
+            >
+              <template v-slot:[`item.Action`]="props">
+                <v-menu bottom left nudge-top="-40" min-width="160">
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      dark
+                      icon
+                      v-bind="attrs"
+                      v-on="on"
+                      class="mx-1 my-2 primary"
+                    >
+                      <v-icon>mdi-dots-vertical</v-icon>
+                    </v-btn>
+                  </template>
+                  <v-list>
+                    <v-list>
+                      <!-- Edit dialog in tables  -->
+                      <v-dialog
+                        v-model="dialog2"
+                        persistent
+                        max-width="800"
+                        class="dig"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-list-item
+                            v-bind="attrs"
+                            v-on="on"
+                            @click="sendID(props.item)"
                           >
-                            <template v-slot:activator="{ on, attrs }">
-                              <v-list-item
-                                v-bind="attrs"
-                                v-on="on"
-                                @click="sendID()"
+                            <v-icon class="mx-1 text-h6">
+                              mdi-grease-pencil
+                            </v-icon>
+                            <v-list-item-title> Edit </v-list-item-title>
+                          </v-list-item>
+                        </template>
+                        <v-card>
+                          <v-card-actions>
+                            <v-btn
+                              absolute
+                              top
+                              right
+                              class="primary rounded-circle pa-0"
+                              @click="dialog2 = false"
+                              height="20"
+                              min-width="auto"
+                              width="20"
+                            >
+                              <v-icon class="text-caption txtOnPrimary--text"
+                                >mdi-close-thick</v-icon
                               >
-                                <v-icon class="mx-1 text-h6">
-                                  mdi-grease-pencil
-                                </v-icon>
-                                <v-list-item-title> Edit </v-list-item-title>
-                              </v-list-item>
-                            </template>
-                            <v-card>
-                              <v-card-actions>
-                                <v-btn
-                                  absolute
-                                  top
-                                  right
-                                  class="primary rounded-circle pa-0"
-                                  @click="dialog = false"
-                                  height="20"
-                                  min-width="auto"
-                                  width="20"
-                                >
-                                  <v-icon
-                                    class="text-caption txtOnPrimary--text"
-                                    >mdi-close-thick</v-icon
-                                  >
-                                </v-btn>
-                              </v-card-actions>
-                              <v-card-title
-                                class="d-flex justify-center text-h5"
-                              >
-                                <h3 class="mt-4">Edit Employee</h3>
-                              </v-card-title>
-                              <v-card-text>
-                                <v-container>
-                                  <v-row no-gutters>
-                                    <v-form ref="changeData">
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >First Name</span
-                                        >
-                                        <v-text-field
-                                          class=""
-                                          height="40"
-                                          label=""
-                                          solo
-                                          :hide-details="true"
-                                          v-model="newData.firstName"
-                                          :rules="validationRules.textRules"
-                                        ></v-text-field>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Last Name</span
-                                        >
-                                        <v-text-field
-                                          class=""
-                                          height="40"
-                                          label="Solo"
-                                          solo
-                                          :hide-details="true"
-                                          v-model="newData.lastName"
-                                          :rules="validationRules.textRules"
-                                        ></v-text-field>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Username</span
-                                        >
-                                        <v-text-field
-                                          class=""
-                                          height="40"
-                                          label="Solo"
-                                          solo
-                                          :hide-details="true"
-                                        ></v-text-field>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Email</span
-                                        >
-                                        <v-text-field
-                                          class=""
-                                          height="40"
-                                          label="Solo"
-                                          solo
-                                          :hide-details="true"
-                                          v-model="newData.email"
-                                          :rules="validationRules.emailRules"
-                                        ></v-text-field>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Password</span
-                                        >
-                                        <v-text-field
-                                          class=""
-                                          height="40"
-                                          label="Solo"
-                                          solo
-                                          :hide-details="true"
-                                          v-model="newData.password"
-                                          :rules="validationRules.passowrdRules"
-                                        ></v-text-field>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Confirm Password</span
-                                        >
-                                        <v-text-field
-                                          class=""
-                                          height="40"
-                                          label="Solo"
-                                          solo
-                                          :hide-details="true"
-                                        ></v-text-field>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Employee ID</span
-                                        >
-                                        <v-text-field
-                                          class=""
-                                          height="40"
-                                          label="Solo"
-                                          solo
-                                          :hide-details="true"
-                                        ></v-text-field>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Joining Date</span
-                                        >
-                                        <v-menu
-                                          v-model="menu2"
-                                          :close-on-content-click="false"
-                                          :nudge-right="40"
-                                          transition="scale-transition"
-                                          offset-y
-                                          min-width="auto"
-                                        >
-                                          <template
-                                            v-slot:activator="{ on, attrs }"
-                                          >
-                                            <v-text-field
-                                              v-model="date"
-                                              label="Picker without buttons"
-                                              prepend-icon="mdi-calendar"
-                                              readonly
-                                              v-bind="attrs"
-                                              v-on="on"
-                                              solo
-                                              :hide-details="true"
-                                              class="relative"
-                                            ></v-text-field>
-                                          </template>
-                                          <v-date-picker
-                                            v-model="date"
-                                            @input="menu2 = false"
-                                          ></v-date-picker>
-                                        </v-menu>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Phone</span
-                                        >
-                                        <v-text-field
-                                          class=""
-                                          height="40"
-                                          label="Solo"
-                                          solo
-                                          :hide-details="true"
-                                        ></v-text-field>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Company</span
-                                        >
-                                        <v-select
-                                          :items="itemss"
-                                          label="Select Designation"
-                                          solo
-                                          :hide-details="true"
-                                          height="50"
-                                        ></v-select>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Department</span
-                                        >
-                                        <v-select
-                                          :items="itemss"
-                                          label="Select Designation"
-                                          solo
-                                          :hide-details="true"
-                                          height="50"
-                                        ></v-select>
-                                      </v-col>
-                                      <v-col class="px-3 mb-4" cols="12" md="6">
-                                        <span
-                                          class="mb-2 d-inline-block font-medium textOnThirdy--text"
-                                          >Designation</span
-                                        >
-                                        <v-select
-                                          :items="itemss"
-                                          label="Select Designation"
-                                          solo
-                                          :hide-details="true"
-                                          height="50"
-                                        ></v-select>
-                                      </v-col>
-                                      <v-btn
-                                        class="primary txtOnPrimary--text text-capitalize font-bold text-h6 my-10 mx-auto pt-3 pb-4 px-10 d-block rounded-pill"
-                                        height="50"
-                                        width="200"
-                                        @click="changeData()"
+                            </v-btn>
+                          </v-card-actions>
+                          <v-card-title class="d-flex justify-center text-h5">
+                            <h3 class="mt-4">Edit Employee</h3>
+                          </v-card-title>
+                          <v-card-text>
+                            <v-container>
+                              <v-form ref="editFormBoxes">
+                                <v-row>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >First Name</span
+                                    >
+                                    <v-text-field
+                                      class=""
+                                      height="40"
+                                      label=""
+                                      solo
+                                      :hide-details="false"
+                                      v-model="editEmployee.firstName"
+                                      :rules="validationRules.textRules"
+                                    ></v-text-field>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Last Name</span
+                                    >
+                                    <v-text-field
+                                      class=""
+                                      height="40"
+                                      label="Solo"
+                                      solo
+                                      :hide-details="false"
+                                      v-model="editEmployee.lastName"
+                                      :rules="validationRules.textRules"
+                                    ></v-text-field>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Username</span
+                                    >
+                                    <v-text-field
+                                      class=""
+                                      height="40"
+                                      label="Solo"
+                                      solo
+                                      :hide-details="false"
+                                    ></v-text-field>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Email</span
+                                    >
+                                    <v-text-field
+                                      class=""
+                                      height="40"
+                                      label="Solo"
+                                      solo
+                                      :hide-details="false"
+                                      v-model="editEmployee.email"
+                                      :rules="validationRules.emailRules"
+                                    ></v-text-field>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Password</span
+                                    >
+                                    <v-text-field
+                                      class=""
+                                      height="40"
+                                      label="Solo"
+                                      solo
+                                      :hide-details="false"
+                                      v-model="editEmployee.password"
+                                      :rules="validationRules.passowrdRules"
+                                    ></v-text-field>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Confirm Password</span
+                                    >
+                                    <v-text-field
+                                      class=""
+                                      height="40"
+                                      label="Solo"
+                                      solo
+                                      :hide-details="false"
+                                    ></v-text-field>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Employee ID</span
+                                    >
+                                    <v-text-field
+                                      class=""
+                                      height="40"
+                                      label="Solo"
+                                      solo
+                                      :hide-details="false"
+                                    ></v-text-field>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Joining Date</span
+                                    >
+                                    <v-menu
+                                      v-model="menu2"
+                                      :close-on-content-click="false"
+                                      :nudge-right="40"
+                                      transition="scale-transition"
+                                      offset-y
+                                      min-width="auto"
+                                    >
+                                      <template
+                                        v-slot:activator="{ on, attrs }"
                                       >
-                                        Submit
-                                      </v-btn>
-                                    </v-form>
-                                  </v-row>
-                                </v-container>
-                              </v-card-text>
-                            </v-card>
-                          </v-dialog>
-                          <v-dialog
-                            v-model="dialog2"
-                            persistent
-                            max-width="560"
-                            class="dig"
-                          >
-                            <template v-slot:activator="{ on, attrs }">
-                              <v-list-item v-bind="attrs" v-on="on">
-                                <v-icon class="mx-1 text-h6">
-                                  mdi-delete-forever-outline
-                                </v-icon>
-                                <v-list-item-title>Delete</v-list-item-title>
-                              </v-list-item>
-                            </template>
-                            <v-card>
-                              <v-card-actions>
-                                <v-btn
-                                  absolute
-                                  top
-                                  right
-                                  class="primary rounded-circle pa-0"
-                                  @click="dialog2 = false"
-                                  height="20"
-                                  min-width="auto"
-                                  width="20"
-                                >
-                                  <v-icon
-                                    class="text-caption txtOnPrimary--text"
-                                    >mdi-close-thick</v-icon
+                                        <v-text-field
+                                          v-model="date"
+                                          label="Picker without buttons"
+                                          prepend-icon="mdi-calendar"
+                                          readonly
+                                          v-bind="attrs"
+                                          v-on="on"
+                                          solo
+                                          :hide-details="false"
+                                          class="relative"
+                                        ></v-text-field>
+                                      </template>
+                                      <v-date-picker
+                                        v-model="date"
+                                        @input="menu2 = false"
+                                      ></v-date-picker>
+                                    </v-menu>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Phone</span
+                                    >
+                                    <v-text-field
+                                      class=""
+                                      height="40"
+                                      label="Solo"
+                                      solo
+                                      :hide-details="false"
+                                    ></v-text-field>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Company</span
+                                    >
+                                    <v-select
+                                      :items="itemss"
+                                      label="Select Designation"
+                                      solo
+                                      :hide-details="false"
+                                      height="50"
+                                    ></v-select>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Department</span
+                                    >
+                                    <v-select
+                                      :items="itemss"
+                                      label="Select Designation"
+                                      solo
+                                      :hide-details="false"
+                                      height="50"
+                                    ></v-select>
+                                  </v-col>
+                                  <v-col class="px-3 mb-4" cols="12" md="6">
+                                    <span
+                                      class="mb-2 d-inline-block font-medium textOnThirdy--text"
+                                      >Designation</span
+                                    >
+                                    <v-select
+                                      :items="itemss"
+                                      label="Select Designation"
+                                      solo
+                                      :hide-details="false"
+                                      height="50"
+                                    ></v-select>
+                                  </v-col>
+                                  <v-btn
+                                    class="primary txtOnPrimary--text text-capitalize font-bold text-h6 my-10 mx-auto pt-3 pb-4 px-10 d-block rounded-pill"
+                                    height="50"
+                                    width="200"
+                                    @click="changeData()"
                                   >
-                                </v-btn>
-                              </v-card-actions>
-                              <v-card-title
-                                class="d-flex justify-center text-h5"
+                                    Submit
+                                  </v-btn>
+                                </v-row>
+                              </v-form>
+                            </v-container>
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                      <!-- dialog in tables Delete -->
+                      <v-dialog
+                        v-model="dialog3"
+                        persistent
+                        max-width="560"
+                        class="dig"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-list-item v-bind="attrs" v-on="on">
+                            <v-icon class="mx-1 text-h6">
+                              mdi-delete-forever-outline
+                            </v-icon>
+                            <v-list-item-title>Delete</v-list-item-title>
+                          </v-list-item>
+                        </template>
+                        <v-card>
+                          <v-card-actions>
+                            <v-btn
+                              absolute
+                              top
+                              right
+                              class="primary rounded-circle pa-0"
+                              @click="dialog3 = false"
+                              height="20"
+                              min-width="auto"
+                              width="20"
+                            >
+                              <v-icon class="text-caption txtOnPrimary--text"
+                                >mdi-close-thick</v-icon
                               >
-                                <h3 class="mt-4">Delete Employee</h3>
-                              </v-card-title>
-                              <v-card-text>
-                                <p class="text-center text-base">
-                                  Are you sure want to delete?
-                                </p>
-                                <v-container>
-                                  <v-row no-gutters class="justify-center">
-                                    <div
-                                      class="shadow-none border-primary border-solid border hover:bg-primary hover:text-white text-primary transition-all duration-500 ease-in-out flex flex-none justify-center items-center text-capitalize font-bold text-h6 mx-3 rounded-pill w-52 h-12 cursor-pointer"
-                                    >
-                                      Delete
-                                    </div>
-                                    <div
-                                      @click="dialog2 = false"
-                                      class="shadow-none border-primary border-solid border hover:bg-primary hover:text-white text-primary transition-all duration-500 ease-in-out flex flex-none justify-center items-center text-capitalize font-bold text-h6 mx-3 rounded-pill w-52 h-12 cursor-pointer"
-                                    >
-                                      Cancel
-                                    </div>
-                                  </v-row>
-                                </v-container>
-                              </v-card-text>
-                            </v-card>
-                          </v-dialog>
-                        </v-list>
-                      </v-list>
-                    </v-menu>
-                  </th>
-                </tr>
-              </tbody>
-            </table>
+                            </v-btn>
+                          </v-card-actions>
+                          <v-card-title class="d-flex justify-center text-h5">
+                            <h3 class="mt-4">Delete Employee</h3>
+                          </v-card-title>
+                          <v-card-text>
+                            <p class="text-center text-base">
+                              Are you sure want to delete?
+                            </p>
+                            <v-container>
+                              <v-row no-gutters class="justify-center">
+                                <div
+                                  @click="deleteEmployee(props.item.id)"
+                                  class="shadow-none border-primary border-solid border hover:bg-primary hover:text-white text-primary transition-all duration-500 ease-in-out flex flex-none justify-center items-center text-capitalize font-bold text-h6 mx-3 rounded-pill w-52 h-12 cursor-pointer"
+                                >
+                                  Delete
+                                </div>
+                                <div
+                                  @click="dialog3 = false"
+                                  class="shadow-none border-primary border-solid border hover:bg-primary hover:text-white text-primary transition-all duration-500 ease-in-out flex flex-none justify-center items-center text-capitalize font-bold text-h6 mx-3 rounded-pill w-52 h-12 cursor-pointer"
+                                >
+                                  Cancel
+                                </div>
+                              </v-row>
+                            </v-container>
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </v-list>
+                  </v-list>
+                </v-menu>
+              </template>
+            </v-data-table>
           </div>
           <div class="foot-table w-full mt-4">
-            <v-row no-gutters>
-              <v-col cols="6" class="">
-                <!-- <p>Showing 1 to 6 of 6 entries</p> -->
-                <span>Showing {{ page * numPages - (numPages - 1) }}</span>
-                <span class="mx-1">To {{ page * numPages }}</span>
-                <span class="mx-1">Of {{ desserts.length }}</span>
-                <span>Entries</span>
-              </v-col>
-              <v-col cols="6">
-                <v-sheet
-                  class="d-flex align-center justify-end"
-                  color="transparent"
-                >
-                  <v-sheet
-                    class="d-flex rounded border border-solid border-border-gray"
-                  >
-                    <v-btn text @click="page--" :disabled="page <= 1"
-                      >Previous</v-btn
-                    >
-                    <v-btn
-                      class="fill-height primary px-3 txtOnPrimary--text rounded-0"
-                      min-width="30"
-                    >
-                      {{ page }}
-                    </v-btn>
-                    <v-btn text @click="page++" :disabled="page >= numPages"
-                      >Next</v-btn
-                    >
-                  </v-sheet>
+            <v-row no-gutters class="align-center">
+              <v-col cols="4" class="d-flex align-center">
+                <span class="mx-3">Go</span>
+                <v-sheet max-width="60" color="transparent">
+                  <v-text-field
+                    v-model="page"
+                    solo
+                    dense
+                    hide-details
+                    @input="page = parseInt(page)"
+                    type="number"
+                  ></v-text-field>
                 </v-sheet>
+              </v-col>
+              <v-col cols="4">
+                <template>
+                  <div class="text-center">
+                    <v-pagination
+                      v-model="page"
+                      :total-visible="5"
+                      :length="Math.ceil(infoEmployees.length / (showNum || 1))"
+                      circle
+                    ></v-pagination>
+                  </div>
+                </template>
+              </v-col>
+              <v-col cols="4">
+                <div
+                  class="d-inline-flex align-center justify-center py-4 w-full"
+                >
+                  <span class="">Show</span>
+                  <v-select
+                    v-model="showNum"
+                    :items="showPerPage"
+                    solo
+                    dense
+                    hide-details
+                    class="mx-3 w-20 block flex-none rounded-lg"
+                  ></v-select>
+                  <span>Entries</span>
+                </div>
               </v-col>
             </v-row>
           </div>
@@ -1079,3 +1078,5 @@
 
 <script lang="ts" src="./employees"></script>
 <style lang="scss" src="./employees.scss"></style>
+
+<!-- .slice( (page - 1) * showNum, showNum * page) -->

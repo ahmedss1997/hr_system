@@ -36,10 +36,8 @@ export default Vue.extend({
         this.currentbody = result.body;
         // this.$store.commit('get_intemployees', body);
         // this.currentbody = this.$store.state.currentUser;
-        console.log(this.currentbody);
       } else {
         // there is something wrong
-        console.log("falseee");
       }
     },
   },

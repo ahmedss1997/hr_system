@@ -19,7 +19,6 @@ export default Vue.extend({
       const form = this.$refs.createAccount as HTMLFormElement;
       if (form && form.validate()) {
         const result = await Emp.Employee.loginEmployee(this.SameAccount); // await comes with promise
-
         if (result.ok && result.body) {
           //
           const body = result.body as models.iLogin;

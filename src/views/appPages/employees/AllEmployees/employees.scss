@@ -1,23 +1,21 @@
 .content-emp {
   .main-table {
     table {
+      background-color: #F2F7FD;
       // thead {}
       tbody {
         tr:nth-child(odd) {
           background-color: #E9E9E9;
+          &:hover {
+            background-color: #E9E9E9 !important;
+          }
+        }
+        tr {
+          &:hover {
+            background-color: transparent !important;
+          }
         }
       }
-    }
-  }
-  .v-overlay__content { 
-    position: absolute;
-    top: 40px;
-  }
-  .overlay2 {
-    .v-overlay__content { 
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
     }
   }
   .v-input__icon--prepend {

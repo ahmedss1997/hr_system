@@ -8,12 +8,10 @@ export default new Vuex.Store({
   state: {
     currentUser: {} as models.employee,
     drawerAll: { mini: false, view: true },
-    allEmployees: {} as models.employee,
+    allEmployees: [] as models.employee[],
+    getAllDepartments: [] as models.Department[],
   },
   mutations: {
-    get_currentUser(state, data) {
-      state.currentUser = data;
-    },
     get_drawer(state, data) {
       state.drawerAll = data;
     },
@@ -22,6 +20,9 @@ export default new Vuex.Store({
     },
     get_intemployees(state, data) {
       state.currentUser = data;
+    },
+    get_department(state, data) {
+      state.getAllDepartments = data;
     },
   },
   actions: {},

@@ -197,9 +197,9 @@ export default Vue.extend({
       if (token) {
         const decoded = jwt_decode(token);
         let that = this as any;
-        console.log(decoded);
+        // console.log(decoded);
         this.tok = decoded;
-        console.log(that.tok.id);
+        // console.log(that.tok.id);
       }
       const result = await Emp.Employee.getonceEmployee(this.tok.id, true);
       if (result.ok && result.body) {
@@ -207,10 +207,10 @@ export default Vue.extend({
         const body = result.body;
         this.$store.commit("get_intemployees", body);
         this.currentbody = this.$store.state.currentUser;
-        console.log(this.currentbody);
+        // console.log(this.currentbody);
       } else {
         // there is something wrong
-        console.log("falseee");
+        // console.log("falseee");
       }
     },
   },

@@ -22,7 +22,7 @@ module.exports = {
       colors: {
         "border-gray": "#e3e3e3 !important",
         "dashbord-gray": "#ccc !important",
-        primary: "#4D77FF",
+        primary: "#FB2576",
         txtOnPrimary: "#fff",
       },
     },

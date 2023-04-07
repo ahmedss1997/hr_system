@@ -20,3 +20,10 @@ export interface employee {
   password: string;
   repeatPass?: string; // for front
 }
+
+export interface Department {
+  id?: number;
+  enName: string;
+  arName: string;
+  departmentId: number;
+}

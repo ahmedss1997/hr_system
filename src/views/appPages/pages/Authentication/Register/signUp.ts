@@ -36,6 +36,7 @@ export default Vue.extend({
   methods: {
     createAccount: async function () {
       const form = this.$refs.createAccount as HTMLFormElement;
+      console.log(form);
       if (form && form.validate()) {
         const result = await Emp.Employee.addEmployee(this.newAccount); // await comes with promise
         console.log(result);
